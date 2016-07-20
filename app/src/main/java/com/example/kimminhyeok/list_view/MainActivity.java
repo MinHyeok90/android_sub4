@@ -46,18 +46,18 @@ public class MainActivity extends AppCompatActivity {
         //네번재 파리미터 : 클릭된 아이템의 아이디(특별한 설정이 없다면 세번째 파라이터인 position과 같은 값)
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Toast.makeText(MainActivity.this, mAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, mAdapter.getItem(i).toString(), Toast.LENGTH_SHORT).show();
 
+            Intent intent = new Intent(
+                    getApplicationContext() //현재화면
+                    ,ItemDetail.class);     //다음 넘어갈 클래스 지정.
+
+            intent.putExtra("name", mAdapter.getItem(i).getName());
+            intent.putExtra("team", mAdapter.getItem(i).getTeam());
+            startActivity(intent);  //다음 화면으로 변경.
+//            onResume();
         }
     };
-
-    public void onClick(View view){
-        Intent intent = new Intent(
-                getApplicationContext() //현재화면
-                ,ItemDetail.class);     //다음 넘어갈 클래스 지정.
-        startActivity(intent);  //다음 화면으로 변경.
-
-    }
 
     public void save(View view){
         EditText name = (EditText) findViewById(R.id.name_text_view);
