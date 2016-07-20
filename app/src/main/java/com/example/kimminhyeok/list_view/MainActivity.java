@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new ListViewAdapter();
         mListView = (ListView) findViewById(R.id.main_list_view);
+        mListView.setEmptyView(findViewById(R.id.empty));
 
         //adapter와 listview 연결.
         mListView.setAdapter(mAdapter);
